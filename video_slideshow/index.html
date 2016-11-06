@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="stylesheet.css">
+  <script src="swipe.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+<body>
+  <img class="logo" src="images/4s4r.png" alt="logo">
+  <p class="header">Chess Championship Opening</p>
+  <div class="videoWrapper">
+    <iframe src="https://player.vimeo.com/video/168639342?loop=1" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  </div>
+  <p class="info">Церемония открытия турнира претендентов на звание чемпиона мира по шахматам <br>Дом Пашкова, 2016 <br>
+    Команда: 4S4R + Аня Титовец <br>
+    Хореограф: Анна Абалихина
+  </p>
+  <div id="mySwipe" class="swipe">
+    <div class="swipe-wrap">
+      <div><img class="imgs" src="images/ALM-151.jpg" alt="img"></div>
+      <div><img class="imgs" src="images/ALM-153.jpg" alt="img"></div>
+      <div><img class="imgs" src="images/ALM-157.jpg" alt="img"></div>
+      <div><img class="imgs" src="images/ALM-159.jpg" alt="img"></div>
+    </div>
+  </div>
+  <div class="about">
+    <p><a class="social_links" href="#">About</a> &nbsp <a class="social_links" href="#">Facebook</a> &nbsp <a class="social_links" href="#">Vimeo</a> &nbsp <a class="social_links" href="#">Tumblr</a> &nbsp <a class="social_links" href="#">Mail</a></p>
+  </div>
+  <script type="text/javascript">
+    var element = document.getElementById('mySwipe');
+    window.mySwipe = new Swipe(element, {
+      startSlide: 0,
+      auto: 3000,
+      draggable: true,
+      autoRestart: false,
+      continuous: true,
+      disableScroll: true,
+      stopPropagation: true,
+      callback: function(index, element) {},
+      transitionEnd: function(index, element) {}
+    });
+
+    $(".imgs").click(function(e){
+      var pos = $(this).position();
+      var width = $(this).width();
+      var x = e.pageX - pos.left;
+      if (x > width/2) {
+        mySwipe.next()
+      } else {
+        mySwipe.prev()
+      }
+    });
+  </script>
+</body>
+</html>
